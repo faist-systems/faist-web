@@ -1,0 +1,10 @@
+{
+  "router": {
+    "x": 420,
+    "y": 260,
+    "title": "Router",
+    "text": "Router propojuje všechna zařízení v domácí síti.",
+    "divisions": ["systems", "security"],
+    "academy": "domaci-sit/router"
+  }
+}
