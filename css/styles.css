@@ -17,10 +17,42 @@ justify-content:center;
 width:800px;
 }
 
+/* body technologií */
+
 .interaction {
 fill:#d4af37;
 cursor:pointer;
 }
+
+/* kruh divizí */
+
+.division {
+opacity:0.15;
+transition:opacity 0.3s;
+cursor:pointer;
+}
+
+.division:hover {
+opacity:0.4;
+}
+
+.energy {
+fill:#d4a017;
+}
+
+.systems {
+fill:#2ecc71;
+}
+
+.security {
+fill:#3498db;
+}
+
+.research {
+fill:#9b59b6;
+}
+
+/* info panel */
 
 #infoPanel {
 position:fixed;
