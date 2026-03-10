@@ -30,4 +30,8 @@ svg.appendChild(point);
 
 }
 
+function closePanel() {
+document.getElementById("infoPanel").classList.add("hidden");
+}
+
 loadInteractions();
