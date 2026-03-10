@@ -12,6 +12,7 @@ const point = document.createElementNS("http://www.w3.org/2000/svg","circle");
 point.setAttribute("cx", item.x);
 point.setAttribute("cy", item.y);
 point.setAttribute("r", 8);
+
 point.classList.add("interaction");
 
 point.addEventListener("click", () => {

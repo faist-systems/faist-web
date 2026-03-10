@@ -2,7 +2,7 @@ body {
 margin:0;
 background:#0b0b0b;
 color:white;
-font-family:Arial;
+font-family:Arial, Helvetica, sans-serif;
 }
 
 #scene {
@@ -18,8 +18,8 @@ width:800px;
 }
 
 .interaction {
-cursor:pointer;
 fill:#d4af37;
+cursor:pointer;
 }
 
 #infoPanel {
