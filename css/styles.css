@@ -14,7 +14,7 @@ justify-content:center;
 }
 
 #house {
-width:800px;
+width:1000px;
 }
 
 /* body technologií */
@@ -27,13 +27,13 @@ cursor:pointer;
 /* kruh divizí */
 
 .division {
-opacity:0.15;
+opacity:0.12;
 transition:opacity 0.3s;
 cursor:pointer;
 }
 
 .division:hover {
-opacity:0.4;
+opacity:0.35;
 }
 
 .energy {
