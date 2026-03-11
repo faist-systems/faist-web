@@ -1,10 +1,37 @@
 {
   "router": {
-    "x": 420,
-    "y": 260,
+    "x": 500,
+    "y": 380,
     "title": "Router",
     "text": "Router propojuje všechna zařízení v domácí síti.",
     "divisions": ["systems", "security"],
     "academy": "domaci-sit/router"
+  },
+
+  "camera": {
+    "x": 420,
+    "y": 260,
+    "title": "Bezpečnostní kamera",
+    "text": "Kamera sleduje prostor kolem domu a zvyšuje bezpečnost.",
+    "divisions": ["security"],
+    "academy": "bezpecnost/kamera"
+  },
+
+  "solar": {
+    "x": 540,
+    "y": 260,
+    "title": "Fotovoltaické panely",
+    "text": "Solární panely vyrábějí elektřinu ze sluneční energie.",
+    "divisions": ["energy"],
+    "academy": "energie/fotovoltaika"
+  },
+
+  "charger": {
+    "x": 730,
+    "y": 430,
+    "title": "Nabíječka elektromobilu",
+    "text": "Domácí nabíječka umožňuje nabíjet elektromobil přímo v garáži.",
+    "divisions": ["energy", "systems"],
+    "academy": "energie/nabijeni-elektromobilu"
   }
 }
