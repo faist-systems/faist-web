@@ -11,26 +11,40 @@ const svg = document.getElementById("house");
 
 interactionsData.forEach(item => {
 
-const point = document.createElementNS("http://www.w3.org/2000/svg","circle");
+const group = document.createElementNS("http://www.w3.org/2000/svg","g");
 
-point.setAttribute("cx", item.x);
-point.setAttribute("cy", item.y);
-point.setAttribute("r", 8);
+group.setAttribute("transform", "translate(" + item.x + "," + item.y + ")");
 
-point.classList.add("interaction");
+group.classList.add("interaction");
 
-point.dataset.divisions = item.divisions.join(",");
+group.dataset.divisions = item.divisions.join(",");
 
-point.addEventListener("mouseenter", () => {
+/* ikona zařízení */
+
+const icon = document.createElementNS("http://www.w3.org/2000/svg","rect");
+
+icon.setAttribute("x", -10);
+icon.setAttribute("y", -10);
+icon.setAttribute("width", 20);
+icon.setAttribute("height", 20);
+icon.setAttribute("rx", 4);
+
+icon.style.fill = "#d4af37";
+
+group.appendChild(icon);
+
+/* interakce */
+
+group.addEventListener("mouseenter", () => {
 highlightDivisions(item.divisions);
 });
 
-point.addEventListener("mouseleave", () => {
+group.addEventListener("mouseleave", () => {
 clearDivisions();
 clearTechnologyHighlights();
 });
 
-point.addEventListener("click", () => {
+group.addEventListener("click", () => {
 
 document.getElementById("infoTitle").textContent = item.title;
 document.getElementById("infoText").textContent = item.text;
@@ -39,7 +53,7 @@ document.getElementById("infoPanel").classList.remove("hidden");
 
 });
 
-svg.appendChild(point);
+svg.appendChild(group);
 
 });
 
@@ -97,14 +111,13 @@ document.querySelectorAll(".interaction").forEach(point => {
 
 const divs = point.dataset.divisions.split(",");
 
+const icon = point.firstChild;
+
 if(divs.includes(division)){
-point.setAttribute("r", 14);
-point.style.fill = "#ffffff";
-point.style.opacity = "1";
+icon.style.fill = "#ffffff";
+point.setAttribute("transform", point.getAttribute("transform") + " scale(1.4)");
 }else{
-point.setAttribute("r", 6);
-point.style.fill = "#555";
-point.style.opacity = "0.4";
+icon.style.fill = "#555";
 }
 
 });
@@ -115,9 +128,9 @@ function clearTechnologyHighlights(){
 
 document.querySelectorAll(".interaction").forEach(point => {
 
-point.setAttribute("r", 8);
-point.style.fill = "#d4af37";
-point.style.opacity = "1";
+const icon = point.firstChild;
+
+icon.style.fill = "#d4af37";
 
 });
 
