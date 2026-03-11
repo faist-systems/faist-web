@@ -13,13 +13,15 @@ interactionsData.forEach(item => {
 
 const group = document.createElementNS("http://www.w3.org/2000/svg","g");
 
+group.dataset.x = item.x;
+group.dataset.y = item.y;
+
 group.setAttribute("transform", "translate(" + item.x + "," + item.y + ")");
 
 group.classList.add("interaction");
-
 group.dataset.divisions = item.divisions.join(",");
 
-/* ikona zařízení */
+/* ikona */
 
 const icon = document.createElementNS("http://www.w3.org/2000/svg","rect");
 
@@ -33,7 +35,7 @@ icon.style.fill = "#d4af37";
 
 group.appendChild(icon);
 
-/* interakce */
+/* hover technologie */
 
 group.addEventListener("mouseenter", () => {
 highlightDivisions(item.divisions);
@@ -43,6 +45,8 @@ group.addEventListener("mouseleave", () => {
 clearDivisions();
 clearTechnologyHighlights();
 });
+
+/* klik */
 
 group.addEventListener("click", () => {
 
@@ -110,14 +114,29 @@ function highlightTechnology(division){
 document.querySelectorAll(".interaction").forEach(point => {
 
 const divs = point.dataset.divisions.split(",");
-
 const icon = point.firstChild;
 
+const x = point.dataset.x;
+const y = point.dataset.y;
+
 if(divs.includes(division)){
+
 icon.style.fill = "#ffffff";
-point.setAttribute("transform", point.getAttribute("transform") + " scale(1.4)");
+
+point.setAttribute(
+"transform",
+"translate(" + x + "," + y + ") scale(1.4)"
+);
+
 }else{
+
 icon.style.fill = "#555";
+
+point.setAttribute(
+"transform",
+"translate(" + x + "," + y + ") scale(1)"
+);
+
 }
 
 });
@@ -132,6 +151,14 @@ const icon = point.firstChild;
 
 icon.style.fill = "#d4af37";
 
+const x = point.dataset.x;
+const y = point.dataset.y;
+
+point.setAttribute(
+"transform",
+"translate(" + x + "," + y + ") scale(1)"
+);
+
 });
 
 }
@@ -140,4 +167,4 @@ function closePanel() {
 document.getElementById("infoPanel").classList.add("hidden");
 }
 
-loadInteractions();
+loadInteractions();s

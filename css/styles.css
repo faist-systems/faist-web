@@ -17,10 +17,9 @@ justify-content:center;
 width:1000px;
 }
 
-/* body technologií */
+/* technologie */
 
 .interaction {
-fill:#d4af37;
 cursor:pointer;
 }
 
@@ -77,4 +76,48 @@ cursor:pointer;
 
 .hidden {
 display:none;
+}
+
+/* bazén animace */
+
+rect[fill="#2a6f9b"] {
+animation: waterMove 4s ease-in-out infinite;
+}
+
+@keyframes waterMove {
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-2px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* okna animace */
+
+rect[fill="#4c6a8a"] {
+animation: windowGlow 6s ease-in-out infinite;
+}
+
+@keyframes windowGlow {
+
+0%{
+opacity:0.7;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+opacity:0.7;
+}
+
 }
