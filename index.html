@@ -13,6 +13,8 @@
 
 <svg id="house" viewBox="0 0 1000 700">
 
+<!-- kruh divizí -->
+
 <circle cx="500" cy="350" r="320" class="division-ring"/>
 
 <path class="division energy"
@@ -27,26 +29,11 @@ d="M500 670 A320 320 0 0 1 180 350 L500 350 Z"/>
 <path class="division research"
 d="M180 350 A320 320 0 0 1 500 30 L500 350 Z"/>
 
-<rect x="0" y="500" width="1000" height="200" fill="#1a2b1a"/>
+<!-- načtený realistický dům -->
 
-<rect x="350" y="320" width="300" height="180" fill="#2b2b2b"/>
-<polygon points="330,320 500,220 670,320" fill="#3b3b3b"/>
+<g id="houseGraphics"></g>
 
-<rect x="380" y="360" width="50" height="40" fill="#4c6a8a"/>
-<rect x="460" y="360" width="50" height="40" fill="#4c6a8a"/>
-<rect x="540" y="360" width="50" height="40" fill="#4c6a8a"/>
-
-<rect x="485" y="420" width="40" height="80" fill="#3a2a1a"/>
-
-<rect x="650" y="360" width="150" height="140" fill="#2a2a2a"/>
-<rect x="670" y="380" width="110" height="90" fill="#444"/>
-
-<rect x="150" y="420" width="120" height="60" fill="#2a6f9b"/>
-
-<rect x="120" y="420" width="10" height="40" fill="#3b2a1a"/>
-<circle cx="125" cy="400" r="30" fill="#2f5b2f"/>
-
-<!-- FAISTY -->
+<!-- Faisty -->
 
 <circle id="faisty" cx="500" cy="520" r="10" fill="#ffffff"/>
 
@@ -63,6 +50,25 @@ d="M180 350 A320 320 0 0 1 500 30 L500 350 Z"/>
 </div>
 
 <script src="js/app.js"></script>
+
+<script>
+
+/* načtení SVG domu */
+
+fetch("assets/svg/house.svg")
+.then(r => r.text())
+.then(svg => {
+
+const parser = new DOMParser();
+const doc = parser.parseFromString(svg,"image/svg+xml");
+
+const house = document.getElementById("houseGraphics");
+
+house.append(...doc.documentElement.childNodes);
+
+});
+
+</script>
 
 </body>
 </html>

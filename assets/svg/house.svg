@@ -1,0 +1,43 @@
+<svg id="houseScene" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg">
+
+<!-- trávník -->
+<rect x="0" y="500" width="1000" height="200" fill="#2f5b2f"/>
+
+<!-- chodník -->
+<rect x="460" y="500" width="80" height="200" fill="#6f6f6f"/>
+
+<!-- bazén -->
+<rect x="150" y="420" width="140" height="70" rx="10" fill="#2a6f9b"/>
+
+<!-- strom -->
+<rect x="120" y="430" width="12" height="40" fill="#4b2e1f"/>
+<circle cx="126" cy="400" r="35" fill="#3c7a3c"/>
+
+<!-- hlavní dům -->
+<rect x="360" y="320" width="280" height="180" fill="#2e2e2e"/>
+
+<!-- střecha -->
+<polygon points="340,320 500,210 660,320" fill="#444"/>
+
+<!-- komín -->
+<rect x="540" y="230" width="30" height="70" fill="#3b3b3b"/>
+
+<!-- okna -->
+<rect x="390" y="360" width="50" height="40" fill="#4c6a8a"/>
+<rect x="460" y="360" width="50" height="40" fill="#4c6a8a"/>
+<rect x="530" y="360" width="50" height="40" fill="#4c6a8a"/>
+
+<!-- dveře -->
+<rect x="480" y="420" width="40" height="80" fill="#4b2e1f"/>
+
+<!-- garáž -->
+<rect x="640" y="350" width="170" height="150" fill="#2a2a2a"/>
+
+<!-- vrata -->
+<rect x="660" y="370" width="130" height="110" fill="#555"/>
+
+<!-- fotovoltaika -->
+<rect x="430" y="250" width="80" height="35" fill="#1a1a1a"/>
+<rect x="520" y="250" width="80" height="35" fill="#1a1a1a"/>
+
+</svg>
