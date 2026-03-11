@@ -1,6 +1,6 @@
 let interactionsData = [];
 
-async function loadInteractions() {
+async function loadInteractions(){
 
 const response = await fetch("data/interactions.json");
 const data = await response.json();
@@ -9,7 +9,7 @@ interactionsData = Object.values(data);
 
 const svg = document.getElementById("house");
 
-interactionsData.forEach(item => {
+interactionsData.forEach(item=>{
 
 const group = document.createElementNS("http://www.w3.org/2000/svg","g");
 
@@ -54,7 +54,6 @@ svg.appendChild(group);
 });
 
 setupDivisionHover();
-
 startFaisty();
 
 }
@@ -147,17 +146,18 @@ function closePanel(){
 document.getElementById("infoPanel").classList.add("hidden");
 }
 
-/* FAISTY pohyb */
+/* FAISTY */
 
 function startFaisty(){
 
 const faisty=document.getElementById("faisty");
+const bubble=document.getElementById("faistyBubble");
 
 const positions=[
-{ x:500, y:520 },
-{ x:220, y:480 },
-{ x:780, y:480 },
-{ x:500, y:260 }
+{ x:500, y:520, text:"Tady začíná technologický domov." },
+{ x:230, y:460, text:"Bazén může být řízen chytrým systémem." },
+{ x:760, y:470, text:"Garáž může obsahovat nabíječku elektromobilu." },
+{ x:500, y:260, text:"Střecha je ideální místo pro fotovoltaiku." }
 ];
 
 let index=0;
@@ -168,6 +168,13 @@ index=(index+1)%positions.length;
 
 faisty.setAttribute("cx",positions[index].x);
 faisty.setAttribute("cy",positions[index].y);
+
+bubble.textContent=positions[index].text;
+bubble.style.opacity="1";
+
+setTimeout(()=>{
+bubble.style.opacity="0";
+},3000);
 
 },4000);
 
