@@ -16,42 +16,34 @@ const group = document.createElementNS("http://www.w3.org/2000/svg","g");
 group.dataset.x = item.x;
 group.dataset.y = item.y;
 
-group.setAttribute("transform", "translate(" + item.x + "," + item.y + ")");
+group.setAttribute("transform","translate("+item.x+","+item.y+")");
 
 group.classList.add("interaction");
 group.dataset.divisions = item.divisions.join(",");
 
-/* ikona */
-
 const icon = document.createElementNS("http://www.w3.org/2000/svg","rect");
 
-icon.setAttribute("x", -10);
-icon.setAttribute("y", -10);
-icon.setAttribute("width", 20);
-icon.setAttribute("height", 20);
-icon.setAttribute("rx", 4);
+icon.setAttribute("x",-10);
+icon.setAttribute("y",-10);
+icon.setAttribute("width",20);
+icon.setAttribute("height",20);
+icon.setAttribute("rx",4);
 
-icon.style.fill = "#d4af37";
+icon.style.fill="#d4af37";
 
 group.appendChild(icon);
 
-/* hover technologie */
+group.addEventListener("mouseenter",()=>highlightDivisions(item.divisions));
 
-group.addEventListener("mouseenter", () => {
-highlightDivisions(item.divisions);
-});
-
-group.addEventListener("mouseleave", () => {
+group.addEventListener("mouseleave",()=>{
 clearDivisions();
 clearTechnologyHighlights();
 });
 
-/* klik */
+group.addEventListener("click",()=>{
 
-group.addEventListener("click", () => {
-
-document.getElementById("infoTitle").textContent = item.title;
-document.getElementById("infoText").textContent = item.text;
+document.getElementById("infoTitle").textContent=item.title;
+document.getElementById("infoText").textContent=item.text;
 
 document.getElementById("infoPanel").classList.remove("hidden");
 
@@ -63,42 +55,41 @@ svg.appendChild(group);
 
 setupDivisionHover();
 
+startFaisty();
+
 }
 
-function highlightDivisions(divisions) {
+function highlightDivisions(divisions){
 
 clearDivisions();
 
-divisions.forEach(div => {
-const element = document.querySelector("." + div);
-if(element){
-element.style.opacity = "0.6";
-}
+divisions.forEach(div=>{
+const el=document.querySelector("."+div);
+if(el) el.style.opacity="0.6";
 });
 
 }
 
-function clearDivisions() {
+function clearDivisions(){
 
-document.querySelectorAll(".division").forEach(el => {
-el.style.opacity = "0.12";
+document.querySelectorAll(".division").forEach(el=>{
+el.style.opacity="0.12";
 });
 
 }
 
 function setupDivisionHover(){
 
-document.querySelectorAll(".division").forEach(div => {
+document.querySelectorAll(".division").forEach(div=>{
 
-div.addEventListener("mouseenter", () => {
+div.addEventListener("mouseenter",()=>{
 
-const name = div.classList[1];
-
+const name=div.classList[1];
 highlightTechnology(name);
 
 });
 
-div.addEventListener("mouseleave", () => {
+div.addEventListener("mouseleave",()=>{
 
 clearTechnologyHighlights();
 clearDivisions();
@@ -111,31 +102,23 @@ clearDivisions();
 
 function highlightTechnology(division){
 
-document.querySelectorAll(".interaction").forEach(point => {
+document.querySelectorAll(".interaction").forEach(point=>{
 
-const divs = point.dataset.divisions.split(",");
-const icon = point.firstChild;
+const divs=point.dataset.divisions.split(",");
+const icon=point.firstChild;
 
-const x = point.dataset.x;
-const y = point.dataset.y;
+const x=point.dataset.x;
+const y=point.dataset.y;
 
 if(divs.includes(division)){
 
-icon.style.fill = "#ffffff";
-
-point.setAttribute(
-"transform",
-"translate(" + x + "," + y + ") scale(1.4)"
-);
+icon.style.fill="#ffffff";
+point.setAttribute("transform","translate("+x+","+y+") scale(1.4)");
 
 }else{
 
-icon.style.fill = "#555";
-
-point.setAttribute(
-"transform",
-"translate(" + x + "," + y + ") scale(1)"
-);
+icon.style.fill="#555";
+point.setAttribute("transform","translate("+x+","+y+") scale(1)");
 
 }
 
@@ -145,26 +128,49 @@ point.setAttribute(
 
 function clearTechnologyHighlights(){
 
-document.querySelectorAll(".interaction").forEach(point => {
+document.querySelectorAll(".interaction").forEach(point=>{
 
-const icon = point.firstChild;
+const icon=point.firstChild;
 
-icon.style.fill = "#d4af37";
+icon.style.fill="#d4af37";
 
-const x = point.dataset.x;
-const y = point.dataset.y;
+const x=point.dataset.x;
+const y=point.dataset.y;
 
-point.setAttribute(
-"transform",
-"translate(" + x + "," + y + ") scale(1)"
-);
+point.setAttribute("transform","translate("+x+","+y+") scale(1)");
 
 });
 
 }
 
-function closePanel() {
+function closePanel(){
 document.getElementById("infoPanel").classList.add("hidden");
 }
 
-loadInteractions();s
+/* FAISTY pohyb */
+
+function startFaisty(){
+
+const faisty=document.getElementById("faisty");
+
+const positions=[
+{ x:500, y:520 },
+{ x:220, y:480 },
+{ x:780, y:480 },
+{ x:500, y:260 }
+];
+
+let index=0;
+
+setInterval(()=>{
+
+index=(index+1)%positions.length;
+
+faisty.setAttribute("cx",positions[index].x);
+faisty.setAttribute("cy",positions[index].y);
+
+},4000);
+
+}
+
+loadInteractions();
