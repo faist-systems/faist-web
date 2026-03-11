@@ -98,9 +98,13 @@ document.querySelectorAll(".interaction").forEach(point => {
 const divs = point.dataset.divisions.split(",");
 
 if(divs.includes(division)){
-point.setAttribute("r", 12);
+point.setAttribute("r", 14);
+point.style.fill = "#ffffff";
+point.style.opacity = "1";
 }else{
 point.setAttribute("r", 6);
+point.style.fill = "#555";
+point.style.opacity = "0.4";
 }
 
 });
@@ -110,7 +114,11 @@ point.setAttribute("r", 6);
 function clearTechnologyHighlights(){
 
 document.querySelectorAll(".interaction").forEach(point => {
+
 point.setAttribute("r", 8);
+point.style.fill = "#d4af37";
+point.style.opacity = "1";
+
 });
 
 }
