@@ -15,6 +15,14 @@ point.setAttribute("r", 8);
 
 point.classList.add("interaction");
 
+point.addEventListener("mouseenter", () => {
+highlightDivisions(item.divisions);
+});
+
+point.addEventListener("mouseleave", () => {
+clearDivisions();
+});
+
 point.addEventListener("click", () => {
 
 document.getElementById("infoTitle").textContent = item.title;
@@ -26,6 +34,27 @@ document.getElementById("infoPanel").classList.remove("hidden");
 
 svg.appendChild(point);
 
+});
+
+}
+
+function highlightDivisions(divisions) {
+
+clearDivisions();
+
+divisions.forEach(div => {
+const element = document.querySelector("." + div);
+if(element){
+element.style.opacity = "0.6";
+}
+});
+
+}
+
+function clearDivisions() {
+
+document.querySelectorAll(".division").forEach(el => {
+el.style.opacity = "0.12";
 });
 
 }
